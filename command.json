@@ -1,0 +1,22 @@
+{
+    "command.cls":{
+        "description": "Clear command prompt",
+        "file": "D:\\Projet\\Projets Python\\Invite de commande +\\command\\cls.py"
+    },
+    "command.clear":{
+        "description": "Clear command prompt",
+        "file": "D:\\Projet\\Projets Python\\Invite de commande +\\command\\cls.py"
+    },
+    "command.print":{
+        "description": "print text",
+        "file": "D:\\Projet\\Projets Python\\Invite de commande +\\command\\print.py"
+    },
+    "command.name":{
+        "description": "command template",
+        "file": "full path of file"
+    },
+    "command.qrcode":{
+        "description": "create QRCODE",
+        "file": "D:\\Projet\\Projets Python\\Invite de commande +\\command\\qrcodecmd.py"
+    }
+}

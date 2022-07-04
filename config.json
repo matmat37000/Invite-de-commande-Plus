@@ -1,0 +1,9 @@
+{
+    "config":{
+        "prompt-start-text": "Bienvenue",
+        "prompt-title": "Terminal",
+        "color_code": "COLOR_CODE.png",
+        "prompt-color": "33",
+        "prompt-time": "True"
+    }
+}
