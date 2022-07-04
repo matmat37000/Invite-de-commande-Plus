@@ -18,5 +18,9 @@
     "command.qrcode":{
         "description": "create QRCODE",
         "file": "D:\\Projet\\Projets Python\\Invite de commande +\\command\\qrcodecmd.py"
+    },
+    "command.read":{
+        "description": "Read qrcode",
+        "file": "D:\\Projet\\Projets Python\\Invite de commande +\\command\\read.py"
     }
 }
