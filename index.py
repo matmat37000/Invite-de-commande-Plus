@@ -25,6 +25,23 @@ def cd(arg):
     except Exception as e:
         print(e)
 
+# def init():
+#     if os.path.exists('C:\\Users\\Public\\Command'):
+#         if not os.path.exists('C:\Users\Public\Command\config.json'):
+#             with open('C:\Users\Public\config.json', 'w') as file:
+#                 file.write("""{
+#                     "config":{
+#                     "prompt-start-text": "Bienvenue,",
+#                     "prompt-title": "Terminal",
+#                     "color_code": "COLOR_CODE.png",
+#                     "prompt-color": "37",
+#                     "prompt-time": "True"
+#                 }
+#             }""")
+#     else:
+#         os.mkdir('C:\Users\PublicCommand')
+#         init()
+# init()
 os.system('cls')
 with open('D:\Projet\Projets Python\Invite de commande +\config.json', 'r') as file:
     configuration = json.load(file)
