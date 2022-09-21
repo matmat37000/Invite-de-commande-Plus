@@ -1,23 +1,22 @@
 import datetime
-from itertools import chain
 import json
 import platform
-from shutil import ExecError
 import subprocess
 import sys
 import time
 import os
 
-from colorama import Back, Fore
+from colorama import Back, Fore, Style
 
 config_text = """
 {
     "config":{
         "prompt-start-text": "You can change the settings in the config file.",
-        "prompt-title": "Terminal",
+        "prompt-title": "Python Command Prompt",
         "color_code": "COLOR_CODE.png",
         "prompt-color": "37",
-        "prompt-time": "False"
+        "prompt-time": "False",
+        "bare": "|"
     }
 }"""
 
@@ -45,6 +44,8 @@ def init():
         os.makedirs('C:\\Users\\Public\\cmd\\command')
         init()
 
+# def bare(type):
+    # print(Style.BRIGHT + type + "| " + Style.RESET_ALL, end='')
 
 init()
 os.system('cls')
@@ -52,7 +53,7 @@ with open('C:\\Users\\Public\\cmd\\config.json', 'r') as file:
     configuration = json.load(file)
     config = configuration['config']
     file.close()
-with open("C:\\Users\\Public\\cmd\\config.json", "r") as file:
+with open("C:\\Users\\Public\\cmd\\command.json", "r") as file:
     commandList = json.load(file)
     file.close()
 now = datetime.datetime.now()
@@ -61,6 +62,7 @@ loop = True
 curpath = os.getcwd()
 name_os = platform.system()
 color = f"\x1b[{config['prompt-color']}m"
+bare = config["bare"] + " "
     
 os.system("title " + config['prompt-title'])
 
@@ -70,6 +72,7 @@ print(color + f"{name_os} Prompt\nVersion [1.0]\nCreator [Mathiol]\n{config['pro
 
 while loop:
     try:
+        # print(Style.BRIGHT + Fore.LIGHTBLACK_EX + "| " + Style.RESET_ALL, end='')
         now = datetime.datetime.now()
         now2 = (now.strftime("%H:%M:%S %d/%m/%Y"))
         curpath = os.getcwd()
@@ -77,19 +80,27 @@ while loop:
             if config['prompt-time'] == "True":
                 prompt_text = color + f"{now2} | {curpath}> "
             else:
-                prompt_text = color + f"{curpath}> "
+                prompt_text = Style.BRIGHT + Fore.GREEN + bare + Style.RESET_ALL + color + f"{curpath}> "
             cmd = input(prompt_text)
         except EOFError: cmd = ""
         
         if cmd != "":
+            # bare(Fore.LIGHTBLACK_EX)
             arg = ARGS(cmd)
             cmd = cmd.split()[0]
             cmd2 = f"command.{cmd}"
+            exe = sys.executable
+            if exe == "" or None:
+                print("err")
             
             if cmd2 in commandList:
-                path = commandList[cmd2]['file']
+                path = "C:\\Users\\Public\\cmd\\command\\" + commandList[cmd2]['file']
                 script = [sys.executable, path] + arg
-                exe = subprocess.call(script)
+                arg2 = ""
+                for i in arg[0:]:
+                    arg2 += i + ' '
+                exe = os.system(f'python {path} {arg2}') #subprocess.call(script)
+                # print(subprocess.CompletedProcess().stdout)
                 # if exe.returncode != 0:
                 #     print(Fore.RED + f"Failed to execute «{cmd}»")
             elif cmd == "cd": cd(arg)
