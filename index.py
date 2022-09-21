@@ -10,6 +10,17 @@ import os
 
 from colorama import Back, Fore
 
+config_text = """
+{
+    "config":{
+        "prompt-start-text": "You can change the settings in the config file.",
+        "prompt-title": "Terminal",
+        "color_code": "COLOR_CODE.png",
+        "prompt-color": "37",
+        "prompt-time": "False"
+    }
+}"""
+
 def ARGS(com):
     try:
         com = com.split()[1:]
@@ -25,29 +36,23 @@ def cd(arg):
     except Exception as e:
         print(e)
 
-# def init():
-#     if os.path.exists('C:\\Users\\Public\\Command'):
-#         if not os.path.exists('C:\Users\Public\Command\config.json'):
-#             with open('C:\Users\Public\config.json', 'w') as file:
-#                 file.write("""{
-#                     "config":{
-#                     "prompt-start-text": "Bienvenue,",
-#                     "prompt-title": "Terminal",
-#                     "color_code": "COLOR_CODE.png",
-#                     "prompt-color": "37",
-#                     "prompt-time": "True"
-#                 }
-#             }""")
-#     else:
-#         os.mkdir('C:\Users\PublicCommand')
-#         init()
-# init()
+def init():
+    if os.path.exists('C:\\Users\\Public\\cmd'):
+        if not os.path.exists('C:\\Users\\Public\\cmd\\config.json'):
+            with open('C:\\Users\\Public\\cmd\\config.json', 'w') as file:
+                file.write(config_text)
+    else:
+        os.makedirs('C:\\Users\\Public\\cmd\\command')
+        init()
+
+
+init()
 os.system('cls')
-with open('D:\Projet\Projets Python\Invite de commande +\config.json', 'r') as file:
+with open('C:\\Users\\Public\\cmd\\config.json', 'r') as file:
     configuration = json.load(file)
     config = configuration['config']
     file.close()
-with open("D:\Projet\Projets Python\Invite de commande +\command.json", "r") as file:
+with open("C:\\Users\\Public\\cmd\\config.json", "r") as file:
     commandList = json.load(file)
     file.close()
 now = datetime.datetime.now()
